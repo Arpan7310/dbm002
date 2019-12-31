@@ -1,0 +1,25 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+dbm/node_modules
+dbm/.pnp
+dbm/.pnp.js
+
+# testing
+dbm/coverage
+
+# production
+dbm/build
+
+# misc
+dbm/.DS_Store
+dbm/.env.local
+dbm/.env.development.local
+dbm/.env.test.local
+dbm/.env.production.local
+
+dbm/npm-debug.log*
+dbm/yarn-debug.log*
+dbm/yarn-error.log*
+
+BACKEND/node_modules
