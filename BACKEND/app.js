@@ -1,4 +1,3 @@
-
 var express=require('express');
 var app=express();
 
@@ -10,13 +9,13 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb+srv://Arpandbuser:9jq7YPlOvGiyeuTv@cluster0-zgvom.mongodb.net/test?retryWrites=true&w=majority';
 
 // Database Name
 const dbName = 'newdatabase';
 
 // Create a new MongoClient
-const client = new MongoClient(url);
+const client = new MongoClient(url,{ useUnifiedTopology: true });
 
 // Use connect method to connect to the Server
 client.connect(function(err) {
