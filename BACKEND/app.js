@@ -1,6 +1,6 @@
 var express=require('express');
 var app=express();
-
+const port=process.env.PORT || 6000
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 var cors=require('cors');
@@ -67,7 +67,7 @@ client.connect(function(err) {
   
 
 
-app.listen('1000',(req,res)=>{
-    console.log("connected on port 1000 ");
+app.listen(port,(req,res)=>{
+    console.log("port" +port);
 })
 });
