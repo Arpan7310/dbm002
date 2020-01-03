@@ -25,7 +25,10 @@ constructor(props) {
       var elems = document.querySelectorAll('.datepicker');
        M.Datepicker.init(elems, {
          onClose:context.handleDate,
-         format:"dd-mm-yyyy"
+         format:"dd-mm-yyyy",
+         
+         
+
        });
     });
    }
@@ -53,7 +56,7 @@ handleChangenoitems = (e) => {
   
 }
     handleSubmit = (e) => {
-       axios.post('http://localhost:1000/savedata',this.state).then((data)=>{
+       axios.post('https://kio9.herokuapp.com/savedata',this.state).then((data)=>{
         console.log(data);
         alert("data is saved");
        
@@ -69,21 +72,35 @@ handleChangenoitems = (e) => {
        return(
           <div>
         <div class="row">
-        <div class="col  l4 s12 m5"></div>
-        <div class="col l4">
+        <div class="col  l4 m3 "></div>
+        <div class="col l4 s12 m6">
          <div class="card-panel bisque">
          <AddProduct  handleClicks={this.handleClicks}/>
-        <input type="text" onChange={this.handleChangenoitems}/>
-        <label><strong>No of items</strong></label>
-        <input class="validate" type="text" onChange={this.handleChangetdesc}/>
-        <label><strong>Transaction Description</strong></label>
+         <div class="row"></div>
+         <div class="row"></div>
+         <div class="input-field">
+        <input type="number" id="no_items" class="validate" onChange={this.handleChangenoitems}/>
+        <label for="no_items"><strong>No of items</strong></label>
+        </div>
+        <div class="row"></div>
+        <div class="input-field">
+        <input class="validate" id="tdesc" type="text" onChange={this.handleChangetdesc}/>
+        <label for="tdesc"><strong>Transaction Description</strong></label>
+        </div>
+        <div class="row"></div>
+         <div class="input-field">
         <input type="text" class="datepicker"  id="datepicker" ref={this.date} />
-        <label><strong>Enter date</strong></label>
+        <label for="datepicker"><strong>Enter date</strong></label>
+        </div>
+        <div class="row"></div>
+        
+        
          <p>
          <label><input name="group1" type="radio" id="radio" value="incoming" onClick={this.handleClickRadio}  /><span>Incoming</span></label>
          </p>
          <p>
       <label> <input name="group1" type="radio" id="radio" value="outgoing" onClick={this.handleClickRadio}  /><span>Outgoing</span> </label></p>
+      <div class="row"></div>
         <div class="sn">
         <a class="waves-effect waves-light btn " href="/Addnew">Add New Item</a>
         <a class="waves-effect waves-light btn " disabled={ !this.state.noitems.trim() 

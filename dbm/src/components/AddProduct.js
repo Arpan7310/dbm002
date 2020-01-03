@@ -15,7 +15,7 @@ class AddProduct extends Component{
     }
    componentDidMount= ()=>{
   M.AutoInit();
-   Axios.get('http://localhost:1000/getdata2',{}).then((a)=>{
+   Axios.get('https://kio9.herokuapp.com/getdata2',{}).then((a)=>{
    
    
    

@@ -29,7 +29,7 @@ handleChangetext =(e) => {
     }
 
 handleClick = (e) => {
-  axios.post('http://localhost:1000/savedata2',this.state).then((data)=>{
+  axios.post('https://kio9.herokuapp.com/savedata2',this.state).then((data)=>{
     console.log(data);
     alert("data is saved");
   })
@@ -45,11 +45,17 @@ handleClick = (e) => {
     
       <div class="col l4">
       <div class="card-panel " id="prop">
+       <div class="input-field">
        
-       <label class="ghu"><strong>Name</strong></label>
-      <input type="text"  onChange={this.handleChangename}/>
-        <label class="ghu">item</label>
-        <input type="text" onChange={this.handleChangetext}  />
+      <input type="text" id="name" onChange={this.handleChangename}/>
+      <label class="validate" for="name"><strong>Name</strong></label>
+      </div>
+      <div class="row"></div>
+      <div class="input-field">
+        <input type="text"  id="type" onChange={this.handleChangetext}  />
+        <label class="validate"  for="type"><strong>Type</strong></label>
+        </div>
+        <div class="row"></div>
         <a class="waves-effect waves-light btn-small" onClick={this.handleClick} disabled={!this.state.label.trim()
         || !this.state.value.trim()
         } >Submit</a>

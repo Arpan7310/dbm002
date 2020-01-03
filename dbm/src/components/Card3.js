@@ -2,6 +2,7 @@ import React ,{Component} from 'react'
 import axios from 'axios'
 import Select from 'react-select';
 
+
 class Card3 extends Component{
 
     constructor(props){
@@ -18,15 +19,21 @@ class Card3 extends Component{
 
     handleClick = (e) =>{
 
- axios.post('http://localhost:1000/savedata3',this.state).then((a)=>{
+
+ axios.post('https://kio9.herokuapp.com/savedata3',this.state).then((a)=>{
     
           console.log("ota",a)
           this.setState({
             array1:a.data.x
         })
     })
-  
+
 }
+
+
+
+
+    
 
     handleChange =(e) =>{
       this.setState({
@@ -34,7 +41,7 @@ class Card3 extends Component{
       })
     }
 componentDidMount(){
-    axios.get('http://localhost:1000/getdata2',{}).then((a)=>{
+    axios.get('https://kio9.herokuapp.com/getdata2',{}).then((a)=>{
    
    
    
@@ -45,28 +52,45 @@ componentDidMount(){
              })
          
 })
+axios.get('https://kio9.herokuapp.com/getdata',{}).then((a)=>{
+    
+  console.log("mukherjee is",a)
+ 
+  this.setState({
+    array1:a.data
+})
+})
+
+
 }
+
 
          
 
 
     render(){
       let y = this.state.array1.sort((a, b) => new Date(...a.date.split('-').reverse()) - new Date(...b.date.split('-').reverse()));
+      
         return(
           <div>
          
              <div class="card-panel ">
-             
-             <a class="btn waves-effect "  onClick={this.handleClick}>Search </a>
-
-            <Select 
+             <div class="row">
+              
+          <div class="col m7 s7 l7">  <Select 
                  onChange={this.handleChange}
                   options={this.state.array2} 
+                
                 />
-              
-              
-              
+                </div>
+                <div class="col   m7 s7 l2">
+             <a class="btn waves-effect "  onClick={this.handleClick}>Search </a></div>
+             <div class="col   m3 s2 l3"><a class="btn waves-effect "  href="/Card3">Show all</a></div>
+             
+                </div>
+                
               </div> 
+              
             <table  class="card-panel  yu "  >
             <thead class="brown-text hoverable fixed"  >
           <tr>
@@ -77,6 +101,7 @@ componentDidMount(){
               <th>Status</th>
               <th>Remarks</th>
           </tr>
+         
         </thead>
         
  
